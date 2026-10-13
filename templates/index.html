@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skincare ML</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f1;
+            color: #303d32;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: white;
+            padding: 20px 8%;
+            border-bottom: 1px solid #e0e5dc;
+        }
+
+        header h2 {
+            margin: 0;
+            color: #587558;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 45px auto;
+            padding: 0 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro h1 {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .intro p {
+            color: #737b70;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #e1e6dc;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 9px;
+        }
+
+        textarea,
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d6ddd2;
+            border-radius: 7px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .field {
+            margin-bottom: 22px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 7px;
+            background-color: #648064;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4f694f;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 18px;
+            background-color: #edf3e9;
+            border: 1px solid #d6e3d0;
+            border-radius: 9px;
+        }
+
+        .result h3 {
+            margin-bottom: 5px;
+            color: #456447;
+            font-size: 23px;
+        }
+
+        .result p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #7b8478;
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin-top: 25px;
+            }
+
+            .intro h1 {
+                font-size: 25px;
+            }
+
+            .card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>SkinCare ML</h2>
+    </header>
+
+    <main class="container">
+
+        <section class="intro">
+            <h1>Prediksi Jenis Produk Skincare</h1>
+            <p>
+                Aplikasi Machine Learning untuk memprediksi kategori
+                produk skincare berdasarkan kandungan bahan dan harga.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>Masukkan Data Produk</h2>
+            <p>Lengkapi informasi produk berikut untuk melakukan prediksi.</p>
+
+            <form method="POST">
+                <div class="field">
+                    <label for="ingredients">Kandungan Bahan Skincare</label>
+                    <textarea
+                        id="ingredients"
+                        name="ingredients"
+                        rows="5"
+                        placeholder="Contoh: water, glycerin, niacinamide"
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="field">
+                    <label for="price">Harga Produk (£)</label>
+                    <input
+                        id="price"
+                        type="number"
+                        name="price"
+                        min="0"
+                        step="any"
+                        placeholder="Contoh: 15"
+                        required
+                    >
+                </div>
+
+                <button type="submit">Prediksi Produk</button>
+            </form>
+
+            {% if hasil is not none %}
+            <div class="result">
+                <h3>Hasil Prediksi</h3>
+                <p>
+                    Jenis produk skincare:
+                    <strong>{{ hasil }}</strong>
+                </p>
+            </div>
+            {% endif %}
+
+        </section>
+    </main>
+
+    <footer>
+        SkinCare ML &copy; 2026 | Proyek Machine Learning
+    </footer>
+
+</body>
+</html>
